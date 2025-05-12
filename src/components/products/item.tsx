@@ -17,8 +17,8 @@ export const ProductItem = ({ item }: Props) => {
   const handleAddButton = () => {
     upsertCartItem(item, 1);
     toast({
-      title: "Added to cart!",
-      description: `${item.name} has been added to cart.`,
+      title: "تم إضافة المنتج",
+      description: `${item.name} تم إضافته إلى سلة التسوق`,
       action: <ToastAction altText="close">تجاهل</ToastAction>,
       duration: 900,
     });
@@ -37,7 +37,7 @@ export const ProductItem = ({ item }: Props) => {
         <p className="text-lg">{item.name}</p>
         <p className="text-sm opacity-50">$ {item.price.toFixed(2)}</p>
         <Button variant="outline" onClick={handleAddButton}>
-          Add
+          اضف إلى السلة
         </Button>
       </div>
     </div>

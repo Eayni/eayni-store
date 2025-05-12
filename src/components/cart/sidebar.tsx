@@ -38,7 +38,7 @@ export const CartSidebar = () => {
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Cart</SheetTitle>
+          <SheetTitle>سله التسوق</SheetTitle>
         </SheetHeader>
 
         <div className="flex flex-col gap-5 my-3">
