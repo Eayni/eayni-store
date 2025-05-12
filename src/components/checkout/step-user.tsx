@@ -5,65 +5,61 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCheckoutStore } from "@/stores/checkout-store";
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
-    name: z.string().min(2, "Fill in your name"),
+  name: z.string().min(2, "يرجى إدخال الاسم"),
 });
 
 type Props = {
-    setStep: Dispatch<SetStateAction<Steps>>;
+  setStep: Dispatch<SetStateAction<Steps>>;
 };
 
 export const StepUser = ({ setStep }: Props) => {
-    const { name, setName } = useCheckoutStore((state) => state);
+  const { name, setName } = useCheckoutStore((state) => state);
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: { name },
-    });
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: { name },
+  });
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        setName(values.name);
-        setStep("address");
-    };
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    setName(values.name);
+    setStep("address");
+  };
 
-    return (
-        <Form {...form}>
-            <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="flex flex-col gap-4"
-            >
-                <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Your name</FormLabel>
-                            <FormControl>
-                                <Input
-                                    autoFocus
-                                    placeholder="What is your name?"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
+  return (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-4"
+      >
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>الاسم كاملا</FormLabel>
+              <FormControl>
+                <Input autoFocus placeholder="الاسم كاملا" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-                <div className="flex justify-end between mt-4">
-                    <Button type="submit">Next</Button>
-                </div>
-            </form>
-        </Form>
-    );
+        <div className="flex justify-end between mt-4">
+          <Button type="submit">التالي</Button>
+        </div>
+      </form>
+    </Form>
+  );
 };
