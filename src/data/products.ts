@@ -5,21 +5,21 @@ export const products: Product[] = [
     id: 1,
     category: "sushi",
     name: "Sushi 1",
-    image: "/images/cothes/1.jpg",
+    image: "/images/containers/1.jpg",
     price: 49,
   },
   {
     id: 2,
     category: "sushi",
     name: "Sushi 2",
-    image: "/images/cothes/2.jpg",
+    image: "/images/containers/2.jpg",
     price: 49,
   },
   {
     id: 3,
     category: "sushi",
     name: "Sushi 3",
-    image: "/images/cothes/3.jpg",
+    image: "/images/containers/3.jpg",
     price: 49,
   },
   {
@@ -89,7 +89,7 @@ export const products: Product[] = [
     id: 24,
     category: "pack",
     name: "Combo 4",
-    image: "/images/combo/combo4.png",
+    image: "/images/containers/2.jpg",
     price: 81,
   },
   {
