@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import "@emran-alhaddad/saudi-riyal-font/index.css";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,7 +38,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="w-full max-w-4xl mx-auto text-right">
+            <Header />
+            {children}
+            <Footer />
+          </div>
           <Toaster />
         </ThemeProvider>
       </body>

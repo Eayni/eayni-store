@@ -17,6 +17,15 @@ import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
   name: z.string().min(2, "يرجى إدخال الاسم"),
+  email: z
+    .string()
+    .min(2, " يرجى إدخال البريد الإلكتروني")
+    .email("البريد الإلكتروني غير صالح"),
+  phone: z
+    .string()
+    .min(2, " يرجى إدخال رقم الهاتف")
+    .regex(/^\d+$/, "رقم الهاتف غير صالح")
+    .min(10, "رقم الهاتف يجب أن يكون 10 أرقام"),
 });
 
 type Props = {
@@ -50,6 +59,33 @@ export const StepUser = ({ setStep }: Props) => {
               <FormLabel>الاسم كاملا</FormLabel>
               <FormControl>
                 <Input autoFocus placeholder="الاسم كاملا" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>البريد الإلكتروني</FormLabel>
+              <FormControl>
+                <Input autoFocus placeholder="البريد الإلكتروني" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>رقم الهاتف</FormLabel>
+              <FormControl>
+                <Input autoFocus placeholder="رقم الهاتف" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

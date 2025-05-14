@@ -1,3 +1,7 @@
 export const Logo = () => {
-  return <div className="text-xl">جمعية عيني لإعادة التدوير التعاونية</div>;
+  return (
+    <a href="/" className="text-xl">
+      جمعية عيني لإعادة التدوير التعاونية
+    </a>
+  );
 };

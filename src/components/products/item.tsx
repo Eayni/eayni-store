@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { ToastAction } from "../ui/toast";
 import { useCartStore } from "@/stores/cart-store";
+import ImageCarousel from "../ui/ImageCarousel";
 
 type Props = {
   item: Product;
@@ -20,21 +21,20 @@ export const ProductItem = ({ item }: Props) => {
       title: "تم إضافة المنتج",
       description: `${item.name} تم إضافته إلى سلة التسوق`,
       action: <ToastAction altText="close">تجاهل</ToastAction>,
-      duration: 900,
+      duration: 2000,
     });
   };
 
   return (
     <div>
       <div className="rounded-md overflow-hidden">
-        <img
-          src={item.images[0]}
-          alt={item.name}
-          className="w-full h-32 object-cover"
-        />
+        <ImageCarousel images={item.images} autoPlay={false} showDots={false} />
       </div>
       <div className="mt-3 flex flex-col gap-2">
-        <p className="text-lg">{item.name}</p>
+        <p className="text-lg">
+          <b>{item.name}</b>
+        </p>
+        <p className="text-sm">{item.content}</p>
         <p className="text-sm opacity-50">
           <span className="icon-saudi_riyal"></span>
           {item.price.toFixed(2)}

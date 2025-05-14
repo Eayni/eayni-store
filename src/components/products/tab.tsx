@@ -11,6 +11,7 @@ import { Product } from "@/types/Item";
 type Tab = {
   title: string;
   value: string;
+  count: number;
   products: Product[];
 };
 
@@ -25,10 +26,12 @@ export const ProductTabs = () => {
         const tabs: Tab[] = data.map((item) => ({
           title: item.name,
           value: item._id,
+          count: item.count,
           products: item.products,
         }));
         setLoading(false);
         setTabs(tabs);
+        console.log("Tabs data:", tabs);
       } catch (error) {
         console.error("Error fetching items:", error);
       }
@@ -37,11 +40,11 @@ export const ProductTabs = () => {
   }, []);
 
   return (
-    <Tabs defaultValue="sushi">
+    <Tabs dir="rtl" defaultValue={tabs[0]?.value} className="w-full">
       <TabsList className="flex">
         {tabs.map((item) => (
           <TabsTrigger key={item.value} value={item.value} className="flex-1">
-            {item.title}
+            {item.title} ({item.count})
           </TabsTrigger>
         ))}
       </TabsList>
