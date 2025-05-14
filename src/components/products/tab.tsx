@@ -47,7 +47,7 @@ export const ProductTabs = () => {
       </TabsList>
       {loading && (
         <div className="flex justify-center items-center h-96">
-          <div className="loader">Loading ...</div>
+          <div className="loader">جاري التحميل ...</div>
         </div>
       )}
 
