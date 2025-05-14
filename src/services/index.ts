@@ -96,7 +96,7 @@ export const initOrderPaymentRedirect = async (
         body: JSON.stringify(payload),
       }
     );
-    return initData.url;
+    return initData.url ?? "";
   } catch (error) {
     console.error(`Failed to fetch initOrderPaymentRedirect API:`, error);
     throw error;

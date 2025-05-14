@@ -24,10 +24,10 @@ import {
 import { states } from "@/data/states";
 
 const formSchema = z.object({
-  street: z.string().min(2, "Required field"),
-  number: z.string().min(2, "Required field"),
-  district: z.string().min(2, "Required field"),
-  city: z.string().min(2, "Required field"),
+  street: z.string().min(2, "الحقل مطلوب"),
+  number: z.string().min(2, "الحقل مطلوب"),
+  district: z.string().min(2, "الحقل مطلوب"),
+  city: z.string().min(2, "الحقل مطلوب"),
 });
 
 type Props = {
@@ -56,7 +56,7 @@ export const StepAddress = ({ setStep }: Props) => {
             name="street"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Street</FormLabel>
+                <FormLabel>الطريق / الشارع</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -69,7 +69,7 @@ export const StepAddress = ({ setStep }: Props) => {
             name="number"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Number</FormLabel>
+                <FormLabel>رقم المبني</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -83,7 +83,7 @@ export const StepAddress = ({ setStep }: Props) => {
             name="district"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>District</FormLabel>
+                <FormLabel>اسم الحي</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -97,18 +97,18 @@ export const StepAddress = ({ setStep }: Props) => {
             name="city"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>City</FormLabel>
+                <FormLabel>المدينه</FormLabel>
                 <FormControl>
                   <Select
                     defaultValue={field.value}
                     onValueChange={field.onChange}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="State" />
+                      <SelectValue placeholder="المملكه العربيه السعوديه" />
                     </SelectTrigger>
                     <SelectContent>
                       {states.map((state) => (
-                        <SelectItem key={state.code} value={state.code}>
+                        <SelectItem key={state.name} value={state.name}>
                           {state.name}
                         </SelectItem>
                       ))}
