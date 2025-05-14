@@ -17,7 +17,10 @@ export const CartItem = ({ item }: Props) => {
       </div>
       <div className="flex-1">
         <p className="text-md">{item.product.name}</p>
-        <p className="text-xs opacity-50">$ {item.product.price.toFixed(2)}</p>
+        <p className="text-xs opacity-50">
+          <span className="icon-saudi_riyal"></span>{" "}
+          {item.product.price.toFixed(2)}
+        </p>
       </div>
       <div>
         <CartItemQuantity cartItem={item} />

@@ -24,7 +24,9 @@ export const CartSidebar = () => {
   for (let item of cart) {
     subtotal += item.quantity * item.product.price;
   }
-
+  const tax_value = 15; // Assuming a tax rate of 15%
+  const taxs = subtotal * (tax_value / 100); // Assuming a tax rate of 15%
+  const total = subtotal + taxs; // Assuming a tax rate of 15%
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -50,9 +52,25 @@ export const CartSidebar = () => {
         <Separator className="my-4" />
 
         <div className="flex justify-between items-center text-xs">
-          <div>المجموع:</div>
+          <div>المجموع الجزئي:</div>
           <div>
             <span className="icon-saudi_riyal"></span> {subtotal.toFixed(2)}
+          </div>
+        </div>
+
+        <div className="flex justify-between items-center text-xs">
+          <div>الضريبه: {tax_value}%</div>
+          <div>
+            <span className="icon-saudi_riyal"></span> {taxs.toFixed(2)}
+          </div>
+        </div>
+
+        <Separator className="my-4" />
+
+        <div className="flex justify-between items-center text-xs">
+          <div>المجموع:</div>
+          <div>
+            <span className="icon-saudi_riyal"></span> {total.toFixed(2)}
           </div>
         </div>
 
