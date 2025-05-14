@@ -1,6 +1,6 @@
 "use client";
 
-import { Product } from "@/types/product";
+import { Product } from "@/types/Item";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { ToastAction } from "../ui/toast";
@@ -28,14 +28,17 @@ export const ProductItem = ({ item }: Props) => {
     <div>
       <div className="rounded-md overflow-hidden">
         <img
-          src={item.image}
+          src={item.images[0]}
           alt={item.name}
           className="w-full h-32 object-cover"
         />
       </div>
       <div className="mt-3 flex flex-col gap-2">
         <p className="text-lg">{item.name}</p>
-        <p className="text-sm opacity-50">$ {item.price.toFixed(2)}</p>
+        <p className="text-sm opacity-50">
+          <span className="icon-saudi_riyal"></span>
+          {item.price.toFixed(2)}
+        </p>
         <Button variant="outline" onClick={handleAddButton}>
           اضف إلى السلة
         </Button>

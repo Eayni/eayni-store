@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import "@emran-alhaddad/saudi-riyal-font/index.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

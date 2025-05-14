@@ -1,9 +1,12 @@
+"use client";
+
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getAllProducts } from "@/services/product";
-import { Product } from "@/types/product";
 import { TabsContent } from "@radix-ui/react-tabs";
 import { ProductEmpty } from "./empty";
 import { ProductItem } from "./item";
+import { getAllItems } from "@/services/product";
+import React, { useEffect, useState } from "react";
+import { Product } from "@/types/Item";
 
 type Tab = {
   title: string;
@@ -11,31 +14,27 @@ type Tab = {
   products: Product[];
 };
 
-export const ProductTabs = async () => {
-  const products = await getAllProducts();
-
-  const tabs: Tab[] = [
-    {
-      title: "ملابس",
-      value: "sushi",
-      products: products.filter((item) => item.category === "sushi"),
-    },
-    {
-      title: "حاويات",
-      value: "temaki",
-      products: products.filter((item) => item.category === "temaki"),
-    },
-    {
-      title: "معادن",
-      value: "pack",
-      products: products.filter((item) => item.category === "pack"),
-    },
-    {
-      title: "المشروبات",
-      value: "beverages",
-      products: products.filter((item) => item.category === "beverages"),
-    },
-  ];
+export const ProductTabs = () => {
+  const [tabs, setTabs] = useState<Tab[]>([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const data = await getAllItems();
+        const tabs: Tab[] = data.map((item) => ({
+          title: item.name,
+          value: item._id,
+          products: item.products,
+        }));
+        setLoading(false);
+        setTabs(tabs);
+      } catch (error) {
+        console.error("Error fetching items:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <Tabs defaultValue="sushi">
@@ -46,6 +45,12 @@ export const ProductTabs = async () => {
           </TabsTrigger>
         ))}
       </TabsList>
+      {loading && (
+        <div className="flex justify-center items-center h-96">
+          <div className="loader">Loading ...</div>
+        </div>
+      )}
+
       {tabs.map((item) => (
         <TabsContent key={item.value} value={item.value} className="mt-6">
           {item.products.length > 0 && (

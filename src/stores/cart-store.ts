@@ -1,48 +1,46 @@
 import { Cart } from "@/types/cart";
-import { Product } from "@/types/product";
+import { Product } from "@/types/Item";
 import { create } from "zustand";
 
 type States = {
-    cart: Cart[];
+  cart: Cart[];
 };
 
 type Actions = {
-    upsertCartItem: (product: Product, quantity: number) => void;
+  upsertCartItem: (product: Product, quantity: number) => void;
 };
 
 const initialState: States = {
-    cart: [],
+  cart: [],
 };
 
 export const useCartStore = create<States & Actions>()((set) => ({
-    ...initialState,
-    upsertCartItem: (product, quantity) =>
-        set((state) => {
-            let newCart = state.cart;
+  ...initialState,
+  upsertCartItem: (product, quantity) =>
+    set((state) => {
+      let newCart = state.cart;
 
-            // Search for the product inside the cart
-            let productIndex = newCart.findIndex(
-                (item) => item.product.id === product.id
-            );
+      // Search for the product inside the cart
+      let productIndex = newCart.findIndex(
+        (item) => item.product.id === product.id
+      );
 
-            // If the product does not exist in the cart, add it
-            if (productIndex < 0) {
-                newCart.push({ product, quantity: 0 });
-                productIndex = newCart.findIndex(
-                    (item) => item.product.id === product.id
-                );
-            }
+      // If the product does not exist in the cart, add it
+      if (productIndex < 0) {
+        newCart.push({ product, quantity: 0 });
+        productIndex = newCart.findIndex(
+          (item) => item.product.id === product.id
+        );
+      }
 
-            // Add the quantity for that product
-            newCart[productIndex].quantity += quantity;
+      // Add the quantity for that product
+      newCart[productIndex].quantity += quantity;
 
-            // if the product doesn't have a quantity, remove that product
-            if (newCart[productIndex].quantity <= 0) {
-                newCart = newCart.filter(
-                    (item) => item.product.id !== product.id
-                );
-            }
+      // if the product doesn't have a quantity, remove that product
+      if (newCart[productIndex].quantity <= 0) {
+        newCart = newCart.filter((item) => item.product.id !== product.id);
+      }
 
-            return { ...state, cart: newCart };
-        }),
+      return { ...state, cart: newCart };
+    }),
 }));

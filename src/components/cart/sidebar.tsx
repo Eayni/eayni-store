@@ -51,7 +51,9 @@ export const CartSidebar = () => {
 
         <div className="flex justify-between items-center text-xs">
           <div>المجموع:</div>
-          <div>ريال {subtotal.toFixed(2)}</div>
+          <div>
+            <span className="icon-saudi_riyal"></span> {subtotal.toFixed(2)}
+          </div>
         </div>
 
         <Separator className="my-4" />

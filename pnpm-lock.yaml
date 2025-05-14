@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@emran-alhaddad/saudi-riyal-font':
+        specifier: ^1.0.3
+        version: 1.0.3
       '@hookform/resolvers':
         specifier: ^3.9.1
         version: 3.10.0(react-hook-form@7.56.3(react@19.0.0-rc-02c0e824-20241028))
@@ -102,6 +105,9 @@ packages:
 
   '@emnapi/runtime@1.4.3':
     resolution: {integrity: sha512-pBPWdu6MLKROBX05wSNKcNb++m5Er+KQ9QkB+WVM+pW2Kx9hoSrVTnu3BdkI5eBLZoKu/J6mW/B6i6bJB2ytXQ==}
+
+  '@emran-alhaddad/saudi-riyal-font@1.0.3':
+    resolution: {integrity: sha512-3gnzhyedKBQNvUsKs+4BBJb6ciSqZPzyKWavb8sNe7F2JaTT+m4FMK9WZ1qFMy97dSTDDnWm/kb3zvAm6QjBhQ==}
 
   '@floating-ui/core@1.7.0':
     resolution: {integrity: sha512-FRdBLykrPPA6P76GGGqlex/e7fbe0F1ykgxHYNXQsH/iTEtjMj/f9bpY5oQqbjt5VgZvgz/uKXbGuROijh3VLA==}
@@ -1320,6 +1326,8 @@ snapshots:
     dependencies:
       tslib: 2.8.1
     optional: true
+
+  '@emran-alhaddad/saudi-riyal-font@1.0.3': {}
 
   '@floating-ui/core@1.7.0':
     dependencies:
