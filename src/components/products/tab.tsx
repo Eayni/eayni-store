@@ -7,6 +7,7 @@ import { ProductItem } from "./item";
 import { getAllItems } from "@/services/product";
 import React, { useEffect, useState } from "react";
 import { Product } from "@/types/Item";
+import MyLoader from "../loader/MyLoader";
 
 type Tab = {
   title: string;
@@ -48,11 +49,8 @@ export const ProductTabs = () => {
           </TabsTrigger>
         ))}
       </TabsList>
-      {loading && (
-        <div className="flex justify-center items-center h-96">
-          <div className="loader">جاري التحميل ...</div>
-        </div>
-      )}
+
+      {loading && <MyLoader />}
 
       {tabs.map((item) => (
         <TabsContent key={item.value} value={item.value} className="mt-6">
