@@ -66,7 +66,6 @@ export const CartSidebar = () => {
             الدفع
           </Button>
         </div>
-
         <CheckoutDialog open={checkoutOpen} onOpenChange={setCheckoutOpen} />
       </SheetContent>
     </Sheet>
