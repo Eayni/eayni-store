@@ -4,7 +4,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TabsContent } from "@radix-ui/react-tabs";
 import { ProductEmpty } from "./empty";
 import { ProductItem } from "./item";
-import { getAllItems } from "@/services/product";
+import { getAllItems } from "@/services";
 import React, { useEffect, useState } from "react";
 import { Product } from "@/types/Item";
 import MyLoader from "../loader/MyLoader";

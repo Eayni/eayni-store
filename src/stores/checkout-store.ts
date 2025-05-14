@@ -7,10 +7,8 @@ type States = {
   address: {
     street: string;
     number: string;
-    complement?: string | undefined;
     district: string;
     city: string;
-    state: string;
   };
 };
 
@@ -28,10 +26,8 @@ const initialState: States = {
   address: {
     street: "",
     number: "",
-    complement: "",
     district: "",
     city: "",
-    state: "",
   },
 };
 

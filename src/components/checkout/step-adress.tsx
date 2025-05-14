@@ -26,10 +26,8 @@ import { states } from "@/data/states";
 const formSchema = z.object({
   street: z.string().min(2, "Required field"),
   number: z.string().min(2, "Required field"),
-  complement: z.string().optional(),
   district: z.string().min(2, "Required field"),
   city: z.string().min(2, "Required field"),
-  state: z.string().min(2, "Required field"),
 });
 
 type Props = {
@@ -79,19 +77,7 @@ export const StepAddress = ({ setStep }: Props) => {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="complement"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Complement</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+
           <FormField
             control={form.control}
             name="district"
@@ -105,25 +91,13 @@ export const StepAddress = ({ setStep }: Props) => {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="city"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>City</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="state"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>State</FormLabel>
                 <FormControl>
                   <Select
                     defaultValue={field.value}
