@@ -39,6 +39,11 @@ async function fetchData<T>(
 const apiUrl =
   process.env.NEXT_PUBLIC_API_URL ?? "https://api.eayni.info/store/public";
 
+/**
+ * Fetches all marketplace/products from the API
+ * @returns A promise that resolves to an array of categories
+ * @throws Will throw an error if the fetch fails
+ */
 export const getAllItems = async (): Promise<Item[]> => {
   try {
     // The generic type parameter ensures type safety for the returned data
@@ -48,7 +53,7 @@ export const getAllItems = async (): Promise<Item[]> => {
     );
     return userData;
   } catch (error) {
-    console.error(`Failed to fetch getAllCategories API:`, error);
+    console.error(`Failed to fetch marketplace/products API:`, error);
     throw error;
   }
 };

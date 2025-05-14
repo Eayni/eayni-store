@@ -38,7 +38,7 @@ export const CheckoutDialog = ({ open, onOpenChange }: Props) => {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>
+          <DialogTitle className="text-center">
             {step === "user" && "بيانات المستخدم"}
             {step === "address" && "بيانات العنوان"}
             {step === "finish" && "تأكيد الطلب"}

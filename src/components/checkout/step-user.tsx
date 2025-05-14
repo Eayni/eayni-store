@@ -23,9 +23,8 @@ const formSchema = z.object({
     .email("البريد الإلكتروني غير صالح"),
   phone: z
     .string()
-    .min(2, " يرجى إدخال رقم الهاتف")
     .regex(/^\d+$/, "رقم الهاتف غير صالح")
-    .min(10, "رقم الهاتف يجب أن يكون 10 أرقام"),
+    .min(10, "رقم الهاتف يجب أن يكون 10 أرقام يبدا ب 05"),
 });
 
 type Props = {
@@ -33,15 +32,19 @@ type Props = {
 };
 
 export const StepUser = ({ setStep }: Props) => {
-  const { name, setName } = useCheckoutStore((state) => state);
+  const { name, email, setEmail, phone, setPhone, setName } = useCheckoutStore(
+    (state) => state
+  );
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { name },
+    defaultValues: { name, email, phone },
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     setName(values.name);
+    setEmail(values.email);
+    setPhone(values.phone);
     setStep("address");
   };
 
