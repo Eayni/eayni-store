@@ -3,14 +3,15 @@
 import { OrderSummary } from "@/components/order/orderSummary";
 import { getOrderById } from "@/services";
 import { Order } from "@/types/order";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+// import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 
 export default function OrderClientPage() {
   const [order, setOrder] = useState<Order>();
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
-  const callback = searchParams.get("callback");
+  // const searchParams = useSearchParams();
+  // const id = searchParams.get("id");
+
+  const id = "682509fcfd1497559fa4a84d";
 
   useEffect(() => {
     if (id) {
@@ -23,9 +24,10 @@ export default function OrderClientPage() {
         });
     }
   }, [id]);
-  if (id && callback === "payment") {
-    return <OrderSummary order={order!} />;
-  } else {
-    return <div>رقم الطلب: Not provided</div>;
-  }
+
+  return (
+    <Suspense fallback={<>Loading...</>}>
+      <OrderSummary order={order!} />
+    </Suspense>
+  );
 }

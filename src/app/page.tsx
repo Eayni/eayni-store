@@ -4,11 +4,11 @@ import { Suspense } from "react";
 
 const Page = () => {
   return (
-    <div className="mx-3">
-      <Suspense fallback={<TabsSkeleton />}>
+    <Suspense fallback={<TabsSkeleton />}>
+      <div className="mx-3">
         <ProductTabs />
-      </Suspense>
-    </div>
+      </div>
+    </Suspense>
   );
 };
 
