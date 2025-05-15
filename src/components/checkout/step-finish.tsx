@@ -2,14 +2,22 @@ import { useCheckoutStore } from "@/stores/checkout-store";
 import { Button } from "@/components/ui/button";
 import { initOrderPayload } from "@/lib/order-payload";
 import { initOrderPaymentRedirect } from "@/services";
+import { useState } from "react";
 
 export const StepFinish = () => {
+  const [loading, setLoading] = useState(false);
   const { name } = useCheckoutStore((state) => state);
   const order = initOrderPayload();
   const handleClick = async () => {
-    initOrderPaymentRedirect(order).then((res) => {
-      window.location.href = res;
-    });
+    setLoading(true);
+    // Check if the order is valid
+    initOrderPaymentRedirect(order)
+      .then((res) => {
+        window.location.href = res;
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -22,7 +30,9 @@ export const StepFinish = () => {
         إغلاق المتصفح أثناء عملية الدفع لضمان إتمام العملية بنجاح. عند جاهزيتك،
         اضغط على زر "تأكيد الطلب" أدناه لإرسال طلبك.
       </p>
-      <Button onClick={handleClick}>تأكيد الطلب </Button>
+      <Button disabled={loading} onClick={handleClick}>
+        {loading ? "توجه لبوابه الدفع..." : "تأكيد الطلب"}
+      </Button>
     </div>
   );
 };
