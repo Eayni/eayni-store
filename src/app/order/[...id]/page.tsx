@@ -6,16 +6,21 @@ import { Order } from "@/types/order";
 // import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
-export default function OrderClientPage() {
+export default async function OrderClientPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
   const [order, setOrder] = useState<Order>();
   // const searchParams = useSearchParams();
   // const id = searchParams.get("id");
 
-  const id = "682509fcfd1497559fa4a84d";
+  const hardcodedId = id;
 
   useEffect(() => {
-    if (id) {
-      getOrderById(id)
+    if (hardcodedId) {
+      getOrderById(hardcodedId)
         .then((data) => {
           setOrder(data);
         })
