@@ -32,7 +32,6 @@ export const ProductTabs = () => {
         }));
         setLoading(false);
         setTabs(tabs);
-        console.log("Tabs data:", tabs);
       } catch (error) {
         console.error("Error fetching items:", error);
       }
@@ -41,7 +40,7 @@ export const ProductTabs = () => {
   }, []);
 
   return (
-    <Tabs dir="rtl" defaultValue={tabs[0]?.value} className="w-full">
+    <Tabs dir="rtl" defaultValue={tabs.at(0)?.value} className="w-full">
       <TabsList className="flex">
         {tabs.map((item) => (
           <TabsTrigger key={item.value} value={item.value} className="flex-1">
