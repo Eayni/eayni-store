@@ -9,6 +9,7 @@ export default async function OrderPage({
   params: Promise<{ id: string }>;
 }) {
   const resolvedParams = await params;
+  await new Promise((resolve) => setTimeout(resolve, 5000));
   const order = await getOrderById(resolvedParams.id);
   if (!order._id) {
     return (
