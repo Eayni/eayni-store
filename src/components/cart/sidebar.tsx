@@ -17,7 +17,6 @@ import { CheckoutDialog } from "../checkout/dialog";
 
 export const CartSidebar = () => {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
-
   const { cart } = useCartStore((state) => state);
 
   let subtotal = 0;
@@ -64,7 +63,6 @@ export const CartSidebar = () => {
             <span className="icon-saudi_riyal"></span> {taxs.toFixed(2)}
           </div>
         </div>
-
         <Separator className="my-4" />
 
         <div className="flex justify-between items-center text-xs">
@@ -73,9 +71,7 @@ export const CartSidebar = () => {
             <span className="icon-saudi_riyal"></span> {total.toFixed(2)}
           </div>
         </div>
-
         <Separator className="my-4" />
-
         <div className="text-center">
           <Button
             disabled={cart.length === 0}

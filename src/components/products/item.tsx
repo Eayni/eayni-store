@@ -28,16 +28,20 @@ export const ProductItem = ({ item }: Props) => {
   return (
     <div>
       <div className="rounded-md overflow-hidden">
-        <ImageCarousel images={item.images} autoPlay={false} showDots={false} />
+        <ImageCarousel
+          images={item?.images}
+          autoPlay={false}
+          showDots={false}
+        />
       </div>
       <div className="mt-3 flex flex-col gap-2">
         <p className="text-lg">
-          <b>{item.name}</b>
+          <b>{item?.name}</b>
         </p>
-        <p className="text-sm">{item.content}</p>
+        <p className="text-sm">{item?.content.substring(0, 95)}</p>
         <p className="text-sm opacity-50">
           <span className="icon-saudi_riyal"></span>
-          {item.price.toFixed(2)}
+          {item?.price.toFixed(2)}
         </p>
         <Button variant="outline" onClick={handleAddButton}>
           اضف إلى السلة

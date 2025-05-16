@@ -6,10 +6,10 @@ export default function Custom404() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center px-4">
       <Head>
-        <title>Page Not Found | 404</title>
+        <title>لم يتم العثور على الصفحة | 404</title>
         <meta
           name="description"
-          content="We couldn't find the page you were looking for"
+          content="لم نتمكن من العثور على الصفحة التي تبحث عنها"
         />
       </Head>
 
