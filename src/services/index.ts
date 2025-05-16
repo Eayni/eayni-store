@@ -66,17 +66,9 @@ export const getAllItems = async (): Promise<Item[]> => {
  * @throws Will throw an error if the fetch fails
  */
 export const getOrderById = async (id: string): Promise<Order> => {
-  try {
-    // The generic type parameter ensures type safety for the returned data
-    const userData = await fetchData<Order>(
-      apiUrl + "/marketplace/order/" + id,
-      "GET"
-    );
-    return userData;
-  } catch (error) {
-    console.error(`Failed to fetch marketplace/products API:`, error);
-    throw error;
-  }
+  const res = await fetch(apiUrl + "/marketplace/order/" + id);
+  if (!res.ok) return {} as Order;
+  return res.json();
 };
 
 /**

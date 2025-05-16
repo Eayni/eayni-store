@@ -1,39 +1,25 @@
-"use client"; // must be at the top!
-
 import { OrderSummary } from "@/components/order/orderSummary";
+import { TabsSkeleton } from "@/components/products/skeleton";
 import { getOrderById } from "@/services";
-import { Order } from "@/types/order";
-import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 
-export default async function OrderClientPage({
+export default async function OrderPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = await params;
-  const [order, setOrder] = useState<Order>();
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const fetchOrder = async () => {
-      console.log("Fetching order with searchParams:", searchParams);
-      if (id) {
-        try {
-          const data = await getOrderById(id);
-          setOrder(data);
-        } catch (error) {
-          console.error("Error fetching order:", error);
-        }
-      }
-    };
-
-    fetchOrder();
-  }, [searchParams]);
-
+  const resolvedParams = await params;
+  const order = await getOrderById(resolvedParams.id);
+  if (!order._id) {
+    return (
+      <div className="w-full max-w-2xl mx-auto p-4 border rounded-md shadow-md bg-danger space-y-6">
+        <div>طلب غير موجود</div>
+      </div>
+    );
+  }
   return (
-    <Suspense fallback={<>Loading...</>}>
-      <OrderSummary order={order!} />
+    <Suspense fallback={<TabsSkeleton />}>
+      <OrderSummary order={order} />
     </Suspense>
   );
 }
