@@ -81,7 +81,7 @@ export const CartSidebar = () => {
             disabled={cart.length === 0}
             onClick={() => setCheckoutOpen(true)}
           >
-            الدفع
+            تأكيد الطلب
           </Button>
         </div>
         <CheckoutDialog open={checkoutOpen} onOpenChange={setCheckoutOpen} />

@@ -31,7 +31,7 @@ export const StepFinish = () => {
         اضغط على زر "تأكيد الطلب" أدناه لإرسال طلبك.
       </p>
       <Button disabled={loading} onClick={handleClick}>
-        {loading ? "توجه لبوابه الدفع..." : "تأكيد الطلب"}
+        {loading ? "توجه لبوابه الدفع..." : "الدفع"}
       </Button>
     </div>
   );
