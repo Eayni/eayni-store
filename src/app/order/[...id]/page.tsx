@@ -14,13 +14,11 @@ export default async function OrderClientPage({
   const { id } = await params;
   const [order, setOrder] = useState<Order>();
   // const searchParams = useSearchParams();
-  // const id = searchParams.get("id");
-
-  const hardcodedId = id;
 
   useEffect(() => {
-    if (hardcodedId) {
-      getOrderById(hardcodedId)
+    console.log("Fetching order with ID:", id);
+    if (id) {
+      getOrderById(id)
         .then((data) => {
           setOrder(data);
         })
