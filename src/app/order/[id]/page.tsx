@@ -3,7 +3,7 @@
 import { OrderSummary } from "@/components/order/orderSummary";
 import { getOrderById } from "@/services";
 import { Order } from "@/types/order";
-// import { useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
 export default async function OrderClientPage({
@@ -13,20 +13,23 @@ export default async function OrderClientPage({
 }) {
   const { id } = await params;
   const [order, setOrder] = useState<Order>();
-  // const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    console.log("Fetching order with ID:", id);
-    if (id) {
-      getOrderById(id)
-        .then((data) => {
+    const fetchOrder = async () => {
+      console.log("Fetching order with searchParams:", searchParams);
+      if (id) {
+        try {
+          const data = await getOrderById(id);
           setOrder(data);
-        })
-        .catch((error) => {
+        } catch (error) {
           console.error("Error fetching order:", error);
-        });
-    }
-  }, [id]);
+        }
+      }
+    };
+
+    fetchOrder();
+  }, [searchParams]);
 
   return (
     <Suspense fallback={<>Loading...</>}>
