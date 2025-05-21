@@ -1,5 +1,6 @@
 import { Cart } from "@/types/cart";
 import { CartItemQuantity } from "./item-quantity";
+import { Truck } from "lucide-react";
 
 type Props = {
   item: Cart;
@@ -21,6 +22,14 @@ export const CartItem = ({ item }: Props) => {
           <span className="icon-saudi_riyal"></span>
           {item?.product?.price.toFixed(2)}
         </p>
+        {item?.product?.shipping_cost > 0 && (
+          <p className="text-xs opacity-50">
+            <span className="icon-saudi_riyal"></span>
+            {item?.product?.shipping_cost?.toFixed(2)} - شحن
+            <Truck size={16} strokeWidth={1} /> {item?.product?.shipping_days}{" "}
+            ايام عمل
+          </p>
+        )}
       </div>
       <div>
         <CartItemQuantity cartItem={item} />

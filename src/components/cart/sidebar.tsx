@@ -20,9 +20,12 @@ export const CartSidebar = () => {
   const { cart } = useCartStore((state) => state);
 
   let subtotal = 0;
+  let shipping = 0;
   for (let item of cart) {
-    subtotal += item.quantity * item.product.price;
+    shipping += item.product.shipping_cost;
+    subtotal += item.quantity * item.product.price + shipping;
   }
+
   const tax_value = 15; // Assuming a tax rate of 15%
   const taxs = subtotal * (tax_value / 100); // Assuming a tax rate of 15%
   const total = subtotal + taxs; // Assuming a tax rate of 15%
@@ -49,6 +52,13 @@ export const CartSidebar = () => {
         </div>
 
         <Separator className="my-4" />
+
+        <div className="flex justify-between items-center text-xs">
+          <div>الشحن</div>
+          <div>
+            <span className="icon-saudi_riyal"></span> {shipping.toFixed(2)}
+          </div>
+        </div>
 
         <div className="flex justify-between items-center text-xs">
           <div>المجموع الجزئي:</div>

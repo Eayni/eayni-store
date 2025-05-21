@@ -4,6 +4,8 @@ export type Product = {
   content: string;
   stock: number;
   price: number;
+  shipping_cost: number;
+  shipping_days: number;
   images: string[];
   active: true;
 };

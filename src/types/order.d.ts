@@ -18,6 +18,8 @@ export type Order = {
       content: string;
       price: number;
       stock: number;
+      shipping_cost: number;
+      shipping_days: number;
     };
     quantity: 1;
     _id: string;
