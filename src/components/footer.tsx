@@ -1,3 +1,5 @@
+import { ThemeToggle } from "./theme-toggle";
+
 export const Footer = () => {
   return (
     <footer className=" ">
@@ -16,6 +18,7 @@ export const Footer = () => {
             <p className="text-sm text-gray-400 mb-4">
               تحت إشراف وزارة الموارد البشرية والتنمية الاجتماعية برقم 10069
             </p>
+            <ThemeToggle />
           </div>
 
           {/* Quick Links */}

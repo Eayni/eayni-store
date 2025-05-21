@@ -10,7 +10,6 @@ export const Header = () => {
       </div>
       <div className=" ">
         <CartSidebar />
-        <ThemeToggle />
       </div>
     </header>
   );
