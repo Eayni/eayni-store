@@ -34,8 +34,9 @@ type Props = {
 };
 
 export const StepUser = ({ setStep }: Props) => {
-  const { name, email, setEmail, phone, client_type, setPhone, setName } =
-    useCheckoutStore((state) => state);
+  const { name, email, setEmail, phone, setPhone, setName } = useCheckoutStore(
+    (state) => state
+  );
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
