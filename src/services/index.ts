@@ -1,3 +1,4 @@
+import { Page } from "@/types/IPage";
 import { Item } from "@/types/Item";
 import { Order } from "@/types/order";
 
@@ -68,6 +69,18 @@ export const getAllItems = async (): Promise<Item[]> => {
 export const getOrderById = async (id: string): Promise<Order> => {
   const res = await fetch(apiUrl + "/marketplace/order/" + id);
   if (!res.ok) return {} as Order;
+  return res.json();
+};
+
+/**
+ * Fetches a single order by its ID from the API
+ * @param id The ID of the order to fetch
+ * @returns A promise that resolves to the order data
+ * @throws Will throw an error if the fetch fails
+ */
+export const getPageById = async (code: string): Promise<Page> => {
+  const res = await fetch(apiUrl + "/page/" + code);
+  if (!res.ok) return {} as Page;
   return res.json();
 };
 
