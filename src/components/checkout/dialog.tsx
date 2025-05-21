@@ -12,6 +12,7 @@ import { StepUser } from "@/components/checkout/step-user";
 import { StepAddress } from "@/components/checkout/step-adress";
 import { StepFinish } from "@/components/checkout/step-finish";
 import { Steps } from "@/types/checkout-steps";
+import { StepType } from "./step-type";
 
 type Props = {
   open: boolean;
@@ -19,10 +20,13 @@ type Props = {
 };
 
 export const CheckoutDialog = ({ open, onOpenChange }: Props) => {
-  const [step, setStep] = useState<Steps>("user");
+  const [step, setStep] = useState<Steps>("type");
 
   let progressPct = 0;
   switch (step) {
+    case "type":
+      progressPct = 10;
+      break;
     case "user":
       progressPct = 30;
       break;
@@ -39,6 +43,7 @@ export const CheckoutDialog = ({ open, onOpenChange }: Props) => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="text-center">
+            {step === "type" && "نوع العميل"}
             {step === "user" && "بيانات المستخدم"}
             {step === "address" && "بيانات العنوان"}
             {step === "finish" && "تأكيد الطلب"}
@@ -48,6 +53,7 @@ export const CheckoutDialog = ({ open, onOpenChange }: Props) => {
         <Progress value={progressPct} />
 
         <div className="flex flex-col gap-3">
+          {step === "type" && <StepType setStep={setStep} />}
           {step === "user" && <StepUser setStep={setStep} />}
           {step === "address" && <StepAddress setStep={setStep} />}
           {step === "finish" && <StepFinish />}

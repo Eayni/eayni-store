@@ -16,6 +16,8 @@ import { useState } from "react";
 import { CheckoutDialog } from "../checkout/dialog";
 
 export const CartSidebar = () => {
+  const [accepted, setAccepted] = useState(false);
+
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const { cart } = useCartStore((state) => state);
 
@@ -82,9 +84,27 @@ export const CartSidebar = () => {
           </div>
         </div>
         <Separator className="my-4" />
+
+        <div className="flex items-start space-x-2">
+          <input
+            id="terms"
+            type="checkbox"
+            checked={accepted}
+            onChange={(e) => setAccepted(e.target.checked)}
+            className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+          />
+          <label htmlFor="terms" className="text-sm text-gray-700">
+            لقد قرآت واطلعت علي{" "}
+            <a href="/page/terms" className="text-blue-600 hover:underline">
+              الشروط والاحكام
+            </a>{" "}
+            الخاصه بمتجر جمعيه عيني
+          </label>
+        </div>
+        <Separator className="my-4" />
         <div className="text-center">
           <Button
-            disabled={cart.length === 0}
+            disabled={cart.length === 0 || !accepted}
             onClick={() => setCheckoutOpen(true)}
           >
             تأكيد الطلب
