@@ -24,13 +24,13 @@ export const CartSidebar = () => {
   let subtotal = 0;
   let shipping = 0;
   for (let item of cart) {
-    shipping += item.product.shipping_cost;
-    subtotal += item.quantity * item.product.price + shipping;
+    shipping += item.product?.shipping_cost;
+    subtotal += item.quantity * item.product.price;
   }
 
   const tax_value = 15; // Assuming a tax rate of 15%
   const taxs = subtotal * (tax_value / 100); // Assuming a tax rate of 15%
-  const total = subtotal + taxs; // Assuming a tax rate of 15%
+  const total = subtotal + shipping + taxs; // Assuming a tax rate of 15%
   return (
     <Sheet>
       <SheetTrigger asChild>
