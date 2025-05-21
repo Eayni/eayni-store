@@ -18,7 +18,6 @@ import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
   name: z.string().min(2, "يرجى إدخال الاسم"),
-  client_type: z.string(),
   email: z
     .string()
     .min(2, " يرجى إدخال البريد الإلكتروني")
@@ -56,20 +55,6 @@ export const StepUser = ({ setStep }: Props) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-4"
       >
-        <FormField
-          control={form.control}
-          name="client_type"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>الاسم كاملا</FormLabel>
-              <FormControl>
-                <Input autoFocus placeholder="الاسم كاملا" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
         <FormField
           control={form.control}
           name="name"

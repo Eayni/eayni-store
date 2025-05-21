@@ -16,7 +16,12 @@ export const StepType = ({ setStep }: Props) => {
   };
 
   const onSubmit = () => {
-    setStep("user");
+    if (client_type === "Individual") {
+      setStep("user");
+    }
+    if (client_type === "Company") {
+      setStep("company");
+    }
   };
 
   const options = [

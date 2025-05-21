@@ -1,1 +1,1 @@
-export type Steps = "user" | "type" | "address" | "finish";
+export type Steps = "user" | "company" | "type" | "address" | "finish";
