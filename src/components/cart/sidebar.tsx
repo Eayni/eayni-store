@@ -31,6 +31,7 @@ export const CartSidebar = () => {
   const tax_value = 15; // Assuming a tax rate of 15%
   const taxs = subtotal * (tax_value / 100); // Assuming a tax rate of 15%
   const total = subtotal + shipping + taxs; // Assuming a tax rate of 15%
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -42,76 +43,78 @@ export const CartSidebar = () => {
           )}
         </Button>
       </SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>سله التسوق</SheetTitle>
-        </SheetHeader>
+      {cart.length > 0 && (
+        <SheetContent>
+          <SheetHeader>
+            <SheetTitle>سله التسوق</SheetTitle>
+          </SheetHeader>
 
-        <div className="flex flex-col gap-5 my-3">
-          {cart.map((item) => (
-            <CartItem key={item.product.id} item={item} />
-          ))}
-        </div>
-
-        <Separator className="my-4" />
-
-        <div className="flex justify-between items-center text-xs">
-          <div>الشحن</div>
-          <div>
-            <span className="icon-saudi_riyal"></span> {shipping.toFixed(2)}
+          <div className="flex flex-col gap-5 my-3">
+            {cart.map((item) => (
+              <CartItem key={item.product.id} item={item} />
+            ))}
           </div>
-        </div>
 
-        <div className="flex justify-between items-center text-xs">
-          <div>المجموع الجزئي:</div>
-          <div>
-            <span className="icon-saudi_riyal"></span> {subtotal.toFixed(2)}
+          <Separator className="my-4" />
+
+          <div className="flex justify-between items-center text-xs">
+            <div>الشحن</div>
+            <div>
+              <span className="icon-saudi_riyal"></span> {shipping.toFixed(2)}
+            </div>
           </div>
-        </div>
 
-        <div className="flex justify-between items-center text-xs">
-          <div>الضريبه: {tax_value}%</div>
-          <div>
-            <span className="icon-saudi_riyal"></span> {taxs.toFixed(2)}
+          <div className="flex justify-between items-center text-xs">
+            <div>المجموع الجزئي:</div>
+            <div>
+              <span className="icon-saudi_riyal"></span> {subtotal.toFixed(2)}
+            </div>
           </div>
-        </div>
-        <Separator className="my-4" />
 
-        <div className="flex justify-between items-center text-xs">
-          <div>المجموع:</div>
-          <div>
-            <span className="icon-saudi_riyal"></span> {total.toFixed(2)}
+          <div className="flex justify-between items-center text-xs">
+            <div>الضريبه: {tax_value}%</div>
+            <div>
+              <span className="icon-saudi_riyal"></span> {taxs.toFixed(2)}
+            </div>
           </div>
-        </div>
-        <Separator className="my-4" />
+          <Separator className="my-4" />
 
-        <div className="flex items-start space-x-2">
-          <input
-            id="terms"
-            type="checkbox"
-            checked={accepted}
-            onChange={(e) => setAccepted(e.target.checked)}
-            className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-          />
-          <label htmlFor="terms" className="text-sm text-gray-700">
-            لقد قرآت واطلعت علي{" "}
-            <a href="/page/terms" className="text-blue-600 hover:underline">
-              الشروط والاحكام
-            </a>{" "}
-            الخاصه بمتجر جمعيه عيني
-          </label>
-        </div>
-        <Separator className="my-4" />
-        <div className="text-center">
-          <Button
-            disabled={cart.length === 0 || !accepted}
-            onClick={() => setCheckoutOpen(true)}
-          >
-            تأكيد الطلب
-          </Button>
-        </div>
-        <CheckoutDialog open={checkoutOpen} onOpenChange={setCheckoutOpen} />
-      </SheetContent>
+          <div className="flex justify-between items-center text-xs">
+            <div>المجموع:</div>
+            <div>
+              <span className="icon-saudi_riyal"></span> {total.toFixed(2)}
+            </div>
+          </div>
+          <Separator className="my-4" />
+
+          <div className="flex items-start space-x-2">
+            <input
+              id="terms"
+              type="checkbox"
+              checked={accepted}
+              onChange={(e) => setAccepted(e.target.checked)}
+              className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <label htmlFor="terms" className="text-sm text-gray-700">
+              لقد قرآت واطلعت علي{" "}
+              <a href="/page/terms" className="text-blue-600 hover:underline">
+                الشروط والاحكام
+              </a>{" "}
+              الخاصه بمتجر جمعيه عيني
+            </label>
+          </div>
+          <Separator className="my-4" />
+          <div className="text-center">
+            <Button
+              disabled={cart.length === 0 || !accepted}
+              onClick={() => setCheckoutOpen(true)}
+            >
+              تأكيد الطلب
+            </Button>
+          </div>
+          <CheckoutDialog open={checkoutOpen} onOpenChange={setCheckoutOpen} />
+        </SheetContent>
+      )}
     </Sheet>
   );
 };
