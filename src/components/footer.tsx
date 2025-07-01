@@ -11,10 +11,22 @@ export const Footer = () => {
             <div className="flex items-center mb-4">
               {/* Company Logo */}
 
-              <span className="font-bold text-xl">
-                جمعية عيني لإعادة التدوير التعاونية
-              </span>
+              <a
+                href="https://sfgco.sa/tech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://eayni-assets.s3.us-east-1.amazonaws.com/poweredbysfgco.png"
+                  alt="aws-secure-site"
+                  width="160"
+                  // style={{ maxWidth: "100%" }}
+                />
+              </a>
             </div>
+            <span className="font-bold text-xl ">
+              جمعية عيني لإعادة التدوير التعاونية
+            </span>
             <p className="text-sm text-gray-400 mb-4">
               تحت إشراف وزارة الموارد البشرية والتنمية الاجتماعية برقم 10069
             </p>
@@ -83,7 +95,7 @@ export const Footer = () => {
 
           {/* Copyright */}
           <div className="text-center text-gray-500 text-sm pt-4">
-            <p>© دعم وتطوير ❤️ مستقبل الاستدامة الخضراء للاستثمار</p>
+            <div className="text-center mt-3"></div>
           </div>
         </div>
       </div>
