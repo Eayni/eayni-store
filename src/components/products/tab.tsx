@@ -60,9 +60,9 @@ export const ProductTabs = () => {
                 ))}
               </div>
             )}
-            {item.products.length === 0 && <ProductEmpty />}
           </TabsContent>
         ))}
+        {tabs.length === 0 && <ProductEmpty />}
       </Tabs>
     );
 };
