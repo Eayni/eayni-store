@@ -42,61 +42,71 @@ export const StepCompany = ({ setStep }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-2 gap-4">
-          <FormField
-            control={form.control}
-            name="cr"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>السجل التجاري</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>اسم الشركه</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <div className="p-6 max-w-xl mx-auto bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 mb-4">
+          <div className="grid grid-cols-2 gap-4">
+            <FormField
+              control={form.control}
+              name="cr"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-gray-800 dark:text-gray-100">
+                    السجل التجاري
+                  </FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-gray-800 dark:text-gray-100">
+                    اسم الشركه
+                  </FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <FormField
-            control={form.control}
-            name="taxـnumber"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>الرقم الضريبي</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <FormField
+              control={form.control}
+              name="taxـnumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-gray-800 dark:text-gray-100">
+                    الرقم الضريبي
+                  </FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <FormField
-            control={form.control}
-            name="national_address"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>العنوان الوطني</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <FormField
+              control={form.control}
+              name="national_address"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-gray-800 dark:text-gray-100">
+                    العنوان الوطني
+                  </FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
         <div className="flex justify-between between mt-4">
           <Button variant="link" onClick={() => setStep("type")}>

@@ -43,8 +43,8 @@ export const StepType = ({ setStep }: Props) => {
 
   return (
     <div>
-      <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md">
-        <h2 className="text-xl font-bold mb-4 text-gray-800">
+      <div className="p-6  bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
+        <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
           يرجي تحديد الجهه
         </h2>
 
@@ -71,12 +71,14 @@ export const StepType = ({ setStep }: Props) => {
                 }}
               >
                 {client_type === option.value && (
-                  <div className="w-3 h-3 rounded-full bg-blue-600"></div>
+                  <div className="w-3 h-3 rounded-full bg-blue-600 dark:bg-blue-400"></div>
                 )}
               </div>
               <label
                 className={`ml-3 ${
-                  option.disabled ? "text-gray-400" : "text-gray-700"
+                  option.disabled
+                    ? "text-gray-400 dark:text-gray-500"
+                    : "text-gray-700 dark:text-gray-200"
                 }`}
                 onClick={() => {
                   handleChange(option.value);
@@ -85,7 +87,9 @@ export const StepType = ({ setStep }: Props) => {
                 <span className="text-base">{option.label}</span>
                 <p
                   className={`text-sm ${
-                    option.disabled ? "text-gray-400" : "text-gray-500"
+                    option.disabled
+                      ? "text-gray-400 dark:text-gray-500"
+                      : "text-gray-500 dark:text-gray-400"
                   }`}
                 >
                   {option.description}

@@ -51,51 +51,55 @@ export const StepUser = ({ setStep }: Props) => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4"
-      >
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>الاسم كاملا</FormLabel>
-              <FormControl>
-                <Input autoFocus placeholder="الاسم كاملا" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>البريد الإلكتروني</FormLabel>
-              <FormControl>
-                <Input autoFocus placeholder="البريد الإلكتروني" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col ">
+        <div className="p-6  bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 mb-4">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-gray-800 dark:text-gray-100">
+                  الاسم كاملا
+                </FormLabel>
+                <FormControl>
+                  <Input autoFocus placeholder="الاسم كاملا" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-gray-800 dark:text-gray-100">
+                  البريد الإلكتروني
+                </FormLabel>
+                <FormControl>
+                  <Input autoFocus placeholder="البريد الإلكتروني" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>رقم الهاتف</FormLabel>
-              <FormControl>
-                <Input autoFocus placeholder="رقم الهاتف" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-gray-800 dark:text-gray-100">
+                  رقم الهاتف
+                </FormLabel>
+                <FormControl>
+                  <Input autoFocus placeholder="رقم الهاتف" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <div className="flex justify-between between mt-4">
           <Button variant="link" onClick={() => setStep("type")}>
             السابق

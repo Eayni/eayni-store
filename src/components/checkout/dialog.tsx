@@ -46,9 +46,9 @@ export const CheckoutDialog = ({ open, onOpenChange }: Props) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
+      <DialogContent className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl p-8 max-w-lg w-full">
         <DialogHeader>
-          <DialogTitle className="text-center">
+          <DialogTitle className="text-center text-2xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight mb-2">
             {step === "type" && "نوع العميل"}
             {step === "company" && "بيانات الشركه"}
             {step === "user" && "بيانات المستخدم"}
@@ -57,9 +57,14 @@ export const CheckoutDialog = ({ open, onOpenChange }: Props) => {
           </DialogTitle>
         </DialogHeader>
 
-        <Progress value={progressPct} />
+        <div className="mb-6">
+          <Progress
+            value={progressPct}
+            className="h-2 bg-gray-100 dark:bg-gray-800 [&>div]:bg-green-500 [&>div]:dark:bg-green-400 rounded-full"
+          />
+        </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col  ">
           {step === "type" && <StepType setStep={setStep} />}
           {step === "company" && <StepCompany setStep={setStep} />}
           {step === "user" && <StepUser setStep={setStep} />}
